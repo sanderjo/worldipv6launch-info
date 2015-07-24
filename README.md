@@ -1,7 +1,10 @@
 # worldipv6launch-info
 Info from worldipv6launch (http://www.worldipv6launch.org/apps/ipv6week/measurement/timeline-nets.html)
 
-
+You need python module pyquery
+```
+sudo apt-get install python-pyquery
+```
 Usage:
 
 Get NL (Netherlands) IPv6 usage:
