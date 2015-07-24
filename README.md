@@ -42,3 +42,13 @@ US  --- GOOGLE-FIBER - Google Fiber Inc.  --- 71.77%
 US  --- CELLCO-PART - Cellco Partnership DBA Verizon Wireless  --- 70.27%
 BR  --- FUNDACAO PARQUE TECNOLOGICO ITAIPU - BRASIL  --- 68.38%
 ```
+
+Get Belgium ISPs usage, sorted on usage:
+```
+$ python get-worldipv6launch-info.py  | grep -e "^BE" | grep "%" | awk '{print $NF,$0}' |  sort -nr | cut -f2- -d' '
+BE  --- ASBRUTELE Brutele SC  --- 61.90%
+BE  --- TELENET-AS Telenet N.V.  --- 43.10%
+BE  --- BELGACOM-SKYNET-AS BELGACOM S.A.  --- 24.79%
+BE  --- BELNET BELNET  --- 5.84%
+BE  --- EDPNET EDPNET  --- 0.91%
+```
