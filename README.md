@@ -3,6 +3,8 @@ Info from worldipv6launch (http://www.worldipv6launch.org/apps/ipv6week/measurem
 
 
 Usage:
+
+Get NL (Netherlands) IPv6 usage:
 ```
 $ python get-worldipv6launch-info.py | grep -e "^NL  ---"
 NL  --- XS4ALL-NL XS4ALL Internet BV  --- 31.71%
@@ -24,4 +26,19 @@ NL  --- SIDN Stichting Internet Domeinregistratie Nederland  --- 9.91%
 NL  --- SURFNET-NL SURFnet, The Netherlands  --- 0.85%
 NL  --- SIGNET-AS Signet B.V.  --- 0.53%
 
+```
+
+Get top IPv6 usage ISPs:
+```
+$ python get-worldipv6launch-info.py | grep '%' | awk '{print $NF,$0}' |  sort -nr | cut -f2- -d' ' | head
+AU  --- NINEWIRE-AS-AP NineWire Pty Ltd  --- 99.94%
+DE  --- SPEEDPARTNER SpeedPartner GmbH  --- 99.31%
+IT  --- FUSOLAB Fusolab Onlus  --- 86.17%
+BR  --- UNIVERSIDADE ESTADUAL DE PONTA GROSSA  --- 84.39%
+US  --- LSU-1 - Louisiana State University  --- 78.78%
+IT  --- TOPIX-AS Consorzio Topix - Torino e Piemonte Exchange Point  --- 73.73%
+FR  --- HIVANE Hivane  --- 73.43%
+US  --- GOOGLE-FIBER - Google Fiber Inc.  --- 71.77%
+US  --- CELLCO-PART - Cellco Partnership DBA Verizon Wireless  --- 70.27%
+BR  --- FUNDACAO PARQUE TECNOLOGICO ITAIPU - BRASIL  --- 68.38%
 ```
