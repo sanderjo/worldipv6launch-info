@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 #import itertools
@@ -19,71 +20,28 @@ for line in open("autnums.html",'r'):
 		asn2name[asn] = name
 	except:
 		pass
+'''
+# Example usage: print country for an ASN:
 print asn2country["3320"]
 print asn2country["3265"]
 
 print asn2country["3320"]
 print asn2country["3265"]
-
-'''
-html = pq(url="http://www.worldipv6launch.org/apps/ipv6week/measurement/timeline-nets.html")
-for isp in [[td.text for td in tr] for tr in html("tr")]:
-	try:
-		# ['XS4ALL', '3265', '55.23%', '24']
-		if isp[0].lower().find("xs4all") >= 0 :
-			print "GEVONDEN", isp
-			asn = isp[1]
-			country = asn2country[asn]
-			print "country is", country
-		if isp[0].lower().find("telenet") >= 0 :
-			print "GEVONDEN", isp
-			asn = isp[1]
-			country = asn2country[asn]
-			print country
-	except:
-		pass
 '''
 
+
 html = pq(url="http://www.worldipv6launch.org/apps/ipv6week/measurement/timeline-nets.html")
+
 for isp in [[td.text for td in tr] for tr in html("tr")]:
 	try:
-		# [None, '6389, 7018, 7132', '39.63%', '2']
-		# ['XS4ALL', '3265', '55.23%', '24']
-		# [None, '2516', '19.33%', '3']
-		'''
-		>>> isp = [None, '638', '39.63%', '2']
-		>>> isp[1].split(',')[0]
-		'638'
-
-		>>> isp = [None, '6389, 7018, 7132', '39.63%', '2']
-		>>> isp[1].split(',')[0]
-		'6389'
-		'''
-		firstasn = isp[1].split(',')[0]
-		#print "firstasn", firstasn
-		#print "ISP is", isp[0]
-		#asn = isp[1]
-		
+		# Format as of September 2015
+		# ['12', 'Liberty Global', '5089, 6830, 20825, 29562', '5.57%']
+		firstasn=isp[2].split(',')[0]
 		country = asn2country[firstasn]
 		ispname = asn2name[firstasn]
-		print country, " ---", ispname, " ---", isp[2]
+		print country, " ---", ispname, " ---", isp[3]
 	except:
+		print "Problem with", isp
 		pass
-
-'''
-html = pq(url="http://www.worldipv6launch.org/apps/ipv6week/measurement/timeline-nets.html")
-for isp in [[td.text for td in tr] for tr in html("tr")]:
-	try:
-		# ['XS4ALL', '3265', '55.23%', '24']
-		asn = isp[1]
-		country = asn2country[asn]
-		#print isp, country
-		if country == "BE":
-			print "BE ISP", isp
-
-	except:
-		pass
-
-'''
 
 
